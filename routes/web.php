@@ -13,6 +13,58 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*
+|--------------------------------------------------------------------------
+| Import Class
+|--------------------------------------------------------------------------
+|
+*/
+
+    // Public
+    use App\Http\Controllers\LoginController as CLogin;
+
+    // Student
+    use App\Http\Controllers\Student\HomeController as CHome;
+
+    // Teacher
+
+/*
+|--------------------------------------------------------------------------
+| Public Routes
+|--------------------------------------------------------------------------
+|
+*/
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::get('/login', [CLogin::class, 'index']);
+    Route::post('/login', [CLogin::class, 'login']);
+
+/*
+|--------------------------------------------------------------------------
+| Student Routes
+|--------------------------------------------------------------------------
+|
+*/
+
+    Route::middleware('session')->group(function () {
+        Route::get('/logout',  [CHome::class, 'logout']);
+
+        Route::middleware('student')->group(function () {
+
+            Route::prefix('student')->group(function () {
+                Route::get('/', [CHome::class, 'index']);
+            });
+
+        });
+
+    });
+
+/*
+|--------------------------------------------------------------------------
+| Teacher Routes
+|--------------------------------------------------------------------------
+|
+*/

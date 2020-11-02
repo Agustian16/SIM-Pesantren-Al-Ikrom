@@ -3,6 +3,10 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Session\TokenMismatchException;
+use Illuminate\Support\Facades\Log;
+use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -26,12 +30,51 @@ class Handler extends ExceptionHandler
     ];
 
     /**
-     * Register the exception handling callbacks for the application.
+     * Report or log an exception.
      *
+     * @param \Throwable $exception
      * @return void
+     * @throws \Exception
      */
-    public function register()
+    public function report(Throwable $exception)
     {
-        //
+        parent::report($exception);
+    }
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \Throwable $exception
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Throwable
+     */
+    public function render($request, Throwable $exception)
+    {
+        parent::report($exception);
+
+        // if ($exception instanceof HttpExceptionInterface) {
+        //     if ($exception->getStatusCode() === 408) {
+        //         Log::error($exception->getMessage());
+
+        //         return redirect('/login')->with('message', 'Waktu koneksi habis, silahkan coba lagi.');
+        //     }
+
+        //     if ($exception->getStatusCode() === 404) {
+        //         return response()->view('error.404', [], 404);
+        //     }
+
+        //     if ($exception->getStatusCode() >= 500) {
+        //         return response()->view('error.505', [], $exception->getStatusCode());
+        //     }
+        // }
+
+        // if ($exception instanceof TokenMismatchException) {
+        //     return redirect()
+        //             ->back()
+        //             ->with('message', 'Anda sudah terlalu lama diam di halaman ini, silahkan coba lagi.');
+        // }
+
+        return parent::render($request, $exception);
     }
 }
