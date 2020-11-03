@@ -1,0 +1,22 @@
+
+/* Card Style */
+
+.default-textbox {
+    position: static;
+    height: 44px;
+
+    /* others/form-bg */
+
+    background: #FFFDFC;
+    /* inner/form */
+
+    box-shadow: inset 0px -2px 0px rgba(255, 255, 255, 0.15), inset 0px 1px 3px rgba(65, 51, 104, 0.2);
+    border-radius: 4px;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
