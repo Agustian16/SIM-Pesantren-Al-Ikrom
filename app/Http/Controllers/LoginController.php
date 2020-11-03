@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Services\Batch;
 use App\Services\School as SchoolApi;
 use App\Services\User as UserApi;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {

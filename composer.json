@@ -20,7 +20,9 @@
         "fakerphp/faker": "^1.9.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "phpunit/phpunit": "^9.3.3",
+        "squizlabs/php_codesniffer": "3.*",
+        "slevomat/coding-standard": "^6.3"
     },
     "config": {
         "optimize-autoloader": true,
@@ -56,6 +58,9 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ]
+        ],
+        "test": "phpdbg -qrr -d memory_limit=-1 vendor/phpunit/phpunit/phpunit --colors=never",
+        "lint:check": "phpcs",
+        "lint:fix": "phpcbf"
     }
 }
