@@ -100,4 +100,22 @@ class Service
             'meta' => $body['meta'] ?? null,
         ];
     }
+
+    public function quranGet($url, $queryParams = [])
+    {
+        try {
+            return Http::withToken($this->token)->timeout($this->timeout)->get(env('API_QURAN').$url, $queryParams);
+        } catch (Exception $error) {
+            abort(408, "Connection Timeout: $url");
+        }
+    }
+
+    public function quranPost($url, $data = [])
+    {
+        try {
+            return Http::withToken($this->token)->timeout($this->timeout)->post(env('API_QURAN').$url, $data);
+        } catch (Exception $error) {
+            abort(408, "Connection Timeout: $url");
+        }
+    }
 }
