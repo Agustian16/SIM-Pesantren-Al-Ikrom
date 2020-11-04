@@ -14,7 +14,7 @@ class CreateVerseStatusTable extends Migration
     public function up()
     {
         Schema::create('verse_status', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
             $table->uuid('student_id')->nullable();
             $table->integer('juz_number');
             $table->integer('chapter_number');

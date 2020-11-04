@@ -14,7 +14,7 @@ class CreateStudentActivitiesTable extends Migration
     public function up()
     {
         Schema::create('student_activities', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
             $table->uuid('student_id')->nullable();
             $table->uuid('teacher_id')->nullable();
             $table->string('activity_type');
