@@ -14,7 +14,7 @@ class CreateMapelsTables extends Migration
     public function up()
     {
         Schema::table('mapels', function (Blueprint $table) {
-            $table->integer('id_kegiatan');
+            $table->id();
             $table->string('kegiatan');
         });
     }

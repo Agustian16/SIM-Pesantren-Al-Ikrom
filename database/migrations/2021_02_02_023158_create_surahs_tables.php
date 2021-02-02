@@ -14,7 +14,7 @@ class CreateSurahsTables extends Migration
     public function up()
     {
         Schema::table('surahs', function (Blueprint $table) {
-            $table->integer('id_surah',3);
+            $table->id();
             $table->string('nama_surah',25);
             $table->string('jenis_surah',10);
             $table->string('arti_surah',25);
