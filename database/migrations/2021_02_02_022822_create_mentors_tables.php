@@ -14,7 +14,7 @@ class CreateMentorsTables extends Migration
     public function up()
     {
         Schema::table('mentors', function (Blueprint $table) {
-            $table->integer('id_mentor',3);
+            $table->id();
             $table->integer('nis',8);
             $table->string('nama',50);
         });

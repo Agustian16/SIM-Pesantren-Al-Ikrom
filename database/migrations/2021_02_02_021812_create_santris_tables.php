@@ -15,9 +15,10 @@ class CreateSantrisTables extends Migration
     {
         Schema::table('santris', function (Blueprint $table) {
             $table->id();
+            $table->string('nis',8);
             $table->string('nama',50);
             $table->string('tingkat',3);
-            $table->string('id_rayon',2);
+            $table->fore('id_rayon',2);
             $table->string('alamat',255);
             $table->string('ayah',50);
             $table->string('ibu',50);

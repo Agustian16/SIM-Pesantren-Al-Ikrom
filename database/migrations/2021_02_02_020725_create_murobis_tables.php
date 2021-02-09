@@ -14,7 +14,7 @@ class CreateMurobisTables extends Migration
     public function up()
     {
         Schema::table('murobis', function (Blueprint $table) {
-            $table->integer('id_murobi',3);
+            $table->id();
             $table->string('nama_murobi',50);
             $table->string('username',8);
             $table->string('password',16);
