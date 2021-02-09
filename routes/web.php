@@ -27,7 +27,6 @@ use Illuminate\Support\Facades\Route;
 
     Route::middleware('session')->group(function () {
         Route::get('/logout', [CHome::class, 'logout']);
-
         Route::middleware('student')->group(function () {
 
             Route::prefix('student')->group(function () {
